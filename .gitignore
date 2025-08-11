@@ -1,0 +1,11 @@
+.venv/
+node_modules/
+.env
+kubeconfig
+*.tfstate*
+.terraform/
+terraform.tfvars
+__pycache__/
+dist/
+coverage/
+.DS_Store

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-node
+spec:
+  template:
+    spec:
+      containers:
+      - name: api-node
+        imagePullPolicy: Never
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-python
+spec:
+  template:
+    spec:
+      containers:
+      - name: api-python
+        imagePullPolicy: Never

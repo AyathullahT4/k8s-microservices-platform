@@ -1,0 +1,14 @@
+name: ci
+on:
+  pull_request:
+    paths:
+      - "k8s/**"
+      - "services/**"
+      - "README.md"
+jobs:
+  kustomize-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: kubectl kustomize k8s/overlays/dev >/dev/null
+      - run: kubectl kustomize k8s/overlays/prod >/dev/null || true

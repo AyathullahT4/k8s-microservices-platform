@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-node
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: api-node }
+  template:
+    metadata:
+      labels: { app: api-node }
+    spec:
+      containers:
+      - name: api-node
+        image: api-node:latest
+        ports: [{ containerPort: 3000 }]
+        readinessProbe:
+          httpGet: { path: /health, port: 3000 }
+          initialDelaySeconds: 2
+          periodSeconds: 5
+        livenessProbe:
+          httpGet: { path: /health, port: 3000 }
+          initialDelaySeconds: 5
+          periodSeconds: 10
